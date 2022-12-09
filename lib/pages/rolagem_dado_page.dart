@@ -15,57 +15,70 @@ class _RolagemDadoPageState extends State<RolagemDadoPage> {
   Widget build(BuildContext context) {
     final tema = Theme.of(context);
     
-    return Padding(
-      padding: const EdgeInsets.only(top: 5.0, bottom: 5.0, left: 10.0, right: 10.0),
-      child: Column(
-        children: [
-          Container(
-            height: 40,
-            color: tema.backgroundColor,
-            child: Padding(
-              padding: const EdgeInsets.only(left: 5.0),
-              child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    Strings.lanceODado,
-                    style: TextStyle(
-                      fontSize: 15,
-                    ),
-                  )),
-            ),
-          ),
-          Expanded(
-            child: Stack(
-              children: [
-                Container(
-                  color: tema.backgroundColor,
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Text(
+                Strings.lanceODado,
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w500
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10.0),
-                  child: Card(
-                    color: tema.cardTheme.color,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Stack(),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            TextButton(
-                              onPressed: (){},
-                              child: Text('Exemplo'),
-                            )
-                          ],
+              ),
+            ],
+          ),
+        ),
+        Expanded(
+          child: Stack(
+            children: [
+              Container(
+                color: tema.backgroundColor,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: Card(
+                  color: tema.cardTheme.color,
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Icon(
+                        Icons.coffee,
+                        size: 260.0,
+                      ),
+                      Text(
+                        '99',
+                        style: TextStyle(
+                          fontSize: 64,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold
                         ),
-                      ],
-                    ),
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              TextButton(
+                                onPressed: (){},
+                                child: Text('Exemplo'),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                    ]
                   ),
-                )
-              ],
-            ),
-          )
-        ],
-      ),
+                ),
+              )
+            ],
+          ),
+        )
+      ],
     );
   }
 }

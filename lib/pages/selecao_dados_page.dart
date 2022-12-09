@@ -14,62 +14,81 @@ class _SelecaoDadosPageState extends State<SelecaoDadosPage> {
   @override
   Widget build(BuildContext context) {
     final tema = Theme.of(context);
-    double tamanhoFonte = 15;
-    double elevacao = 3;
+    double tamanhoFonte = 15.0;
+    double elevacao = 3.0;
+    double tamanhoIconeCard = 35.0;
+    double margemLateralRow = 16.0;
 
     return Column(
       children: [
-        Container(
-          height: 40,
-          color: tema.backgroundColor,
-          child: Align(
-              alignment: Alignment.centerLeft,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 10),
-                child: Text(
-                  Strings.selecioneDado,
-                  style: TextStyle(
-                    fontSize: tamanhoFonte,
-                  ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Text(
+                Strings.selecioneDado,
+                style: TextStyle(
+                  fontSize: tamanhoFonte,
+                  fontWeight: FontWeight.w500
                 ),
-              )),
+              ),
+            ],
+          ),
         ),
         Expanded(
-            child: Stack(children: [
-          Container(
-            color: tema.backgroundColor,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Expanded(
-                  child: Card(
-                    elevation: elevacao,
-                    color: tema.cardTheme.color,
-                    child: Row(
-                      children: [
-                        Text(
-                          'D4 (quatro lados',
-                          style: TextStyle(
-                            fontSize: tamanhoFonte
+          child: Stack(
+            children: [
+              Container(
+              color: tema.backgroundColor,
+              ),
+              Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Expanded(
+                    child: Card(
+                      elevation: elevacao,
+                      color: tema.cardTheme.color,
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(left: margemLateralRow, right: margemLateralRow),
+                            child: Icon(
+                              Icons.coffee,
+                              size: tamanhoIconeCard,
+                            ),
                           ),
-                        )
-                      ],
+                          Text(
+                            "D4 (quatro lados)",
+                            style: TextStyle(
+                              fontSize: tamanhoFonte,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
-                ),
                 Expanded(
                   child: Card(
                     elevation: elevacao,
                     color: tema.cardTheme.color,
                     child: Row(
                       children: [
+                        Padding(
+                          padding: EdgeInsets.only(left: margemLateralRow, right: margemLateralRow),
+                          child: Icon(
+                            Icons.coffee,
+                            size: tamanhoIconeCard,
+                          ),
+                        ),
                         Text(
                           'D6 (seis lados)',
                           style: TextStyle(
-                            fontSize: tamanhoFonte
+                            fontSize: tamanhoFonte,
+                            fontWeight: FontWeight.w400,
                           ),
                         )
                       ],
@@ -82,10 +101,18 @@ class _SelecaoDadosPageState extends State<SelecaoDadosPage> {
                     color: tema.cardTheme.color,
                     child: Row(
                       children: [
+                        Padding(
+                          padding: EdgeInsets.only(left: margemLateralRow, right: margemLateralRow),
+                          child: Icon(
+                            Icons.coffee,
+                            size: tamanhoIconeCard,
+                          ),
+                        ),
                         Text(
                           'D8 (oito lados)',
                           style: TextStyle(
                             fontSize: tamanhoFonte,
+                            fontWeight: FontWeight.w400,
                           ),
                         )
                       ],
@@ -98,10 +125,18 @@ class _SelecaoDadosPageState extends State<SelecaoDadosPage> {
                     color: tema.cardTheme.color,
                     child: Row(
                       children: [
+                        Padding(
+                          padding: EdgeInsets.only(left: margemLateralRow, right: margemLateralRow),
+                          child: Icon(
+                            Icons.coffee,
+                            size: tamanhoIconeCard,
+                          ),
+                        ),
                         Text(
                           'D10 (dez lados)',
                           style: TextStyle(
-                            fontSize: tamanhoFonte
+                            fontSize: tamanhoFonte,
+                            fontWeight: FontWeight.w400,
                           ),
                         )
                       ],
@@ -114,10 +149,18 @@ class _SelecaoDadosPageState extends State<SelecaoDadosPage> {
                     color: tema.cardTheme.color,
                     child: Row(
                       children: [
+                        Padding(
+                          padding: EdgeInsets.only(left: margemLateralRow, right: margemLateralRow),
+                          child: Icon(
+                            Icons.coffee,
+                            size: tamanhoIconeCard,
+                          ),
+                        ),
                         Text(
                           'D12 (doze lados)',
                           style: TextStyle(
-                            fontSize: tamanhoFonte
+                            fontSize: tamanhoFonte,
+                            fontWeight: FontWeight.w400,
                           ),
                         )
                       ],
@@ -130,10 +173,18 @@ class _SelecaoDadosPageState extends State<SelecaoDadosPage> {
                     color: tema.cardTheme.color,
                     child: Row(
                       children: [
+                        Padding(
+                          padding: EdgeInsets.only(left: margemLateralRow, right: margemLateralRow),
+                          child: Icon(
+                            Icons.coffee,
+                            size: tamanhoIconeCard,
+                          ),
+                        ),
                         Text(
                           'D20 (vinte lados)',
                           style: TextStyle(
-                            fontSize: tamanhoFonte
+                            fontSize: tamanhoFonte,
+                            fontWeight: FontWeight.w400,
                           ),
                         ),
                       ],
@@ -143,7 +194,9 @@ class _SelecaoDadosPageState extends State<SelecaoDadosPage> {
               ],
             ),
           ),
-        ])),
+            ]
+          ),
+        ),
       ],
     );
   } //end build
