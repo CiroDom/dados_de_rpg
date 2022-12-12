@@ -194,8 +194,7 @@ class _SelecaoDadosPageState extends State<SelecaoDadosPage> {
               ],
             ),
           ),
-            ]
-          ),
+          ]),
         ),
       ],
     );

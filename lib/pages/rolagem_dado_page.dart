@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -14,6 +16,10 @@ class _RolagemDadoPageState extends State<RolagemDadoPage> {
   @override
   Widget build(BuildContext context) {
     final tema = Theme.of(context);
+    double bordaVert = 12.0;
+    double bordaHori = 54.0;
+
+    String resultado = '?';
     
     return Column(
       children: [
@@ -50,7 +56,7 @@ class _RolagemDadoPageState extends State<RolagemDadoPage> {
                         size: 260.0,
                       ),
                       Text(
-                        '99',
+                        resultado,
                         style: TextStyle(
                           fontSize: 64,
                           color: Colors.white,
@@ -63,10 +69,74 @@ class _RolagemDadoPageState extends State<RolagemDadoPage> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              TextButton(
-                                onPressed: (){},
-                                child: Text('Exemplo'),
-                              )
+                              ElevatedButton(
+                                style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+                                      (state) {
+                                        return tema.primaryColor;
+                                      }
+                                  ),
+                                  shape: MaterialStateProperty
+                                      .resolveWith<OutlinedBorder?>(
+                                    (states){
+                                      return RoundedRectangleBorder(borderRadius: BorderRadius.circular(40.0));
+                                    }
+                                  ),
+                                  padding: MaterialStateProperty
+                                      .resolveWith<EdgeInsetsGeometry?>(
+                                    (states) {
+                                      return EdgeInsets.symmetric(
+                                        horizontal: bordaHori,
+                                        vertical: bordaVert,
+                                      );
+                                    }
+                                  ),
+                                ),
+                                child: Text('Rolar'),
+                                onPressed: (){
+                                  Random random = Random();
+                                  int randomicoDoze = random.nextInt(12);
+                                  resultado = randomicoDoze.toString();
+                                },
+                              ),
+                              SizedBox(width: 8.0,),
+                              OutlinedButton(
+                                style: ButtonStyle(
+                                  side: MaterialStateProperty.resolveWith<BorderSide?>(
+                                      (state) {
+                                        return BorderSide(color: tema.primaryColor);
+                                      }
+                                  ),
+                                  foregroundColor: MaterialStateProperty.resolveWith<Color?>(
+                                      (state) {
+                                        return tema.primaryColor;
+                                      }
+                                  ),
+                                  shape: MaterialStateProperty
+                                      .resolveWith<OutlinedBorder?>(
+                                          (states){
+                                        return RoundedRectangleBorder(borderRadius: BorderRadius.circular(40.0));
+                                      }
+                                  ),
+                                  padding: MaterialStateProperty
+                                      .resolveWith<EdgeInsetsGeometry?>(
+                                          (states) {
+                                        return EdgeInsets.symmetric(
+                                          horizontal: bordaHori,
+                                          vertical: bordaVert,
+                                        );
+                                      }
+                                  ),
+
+                                ),
+                                child: Text(
+                                  'Cancelar',
+                                  style: TextStyle(
+                                    color: tema.primaryColor,
+                                  ),
+                                ),
+                                onPressed: () {},
+                              ),
                             ],
                           ),
                         ],
