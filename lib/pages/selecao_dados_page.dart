@@ -55,10 +55,7 @@ class _SelecaoDadosPageState extends State<SelecaoDadosPage> {
                         children: [
                           Padding(
                             padding: EdgeInsets.only(left: margemLateralRow, right: margemLateralRow),
-                            child: Icon(
-                              Icons.coffee,
-                              size: tamanhoIconeCard,
-                            ),
+                            child: Image.asset("assets/d4.png", height: 45, width: 45,),
                           ),
                           Text(
                             "D4 (quatro lados)",

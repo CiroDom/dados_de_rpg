@@ -2,6 +2,7 @@ import 'package:dados_de_rpg/res/themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../componentes/indicador_pagina.dart';
 import '../pages/rolagem_dado_page.dart';
 import '../pages/selecao_dados_page.dart';
 import '../res/strings.dart';
@@ -15,8 +16,10 @@ class Application extends StatefulWidget {
 }//end DadosRPGApp
 
 class ApplicationState extends State<Application> {
+  static ThemeData tema = Temas.modo_light;
+
   bool isSwitched = false;
-  ThemeData tema = Temas.modo_light;
+  int paginaAtiva = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +62,11 @@ class ApplicationState extends State<Application> {
             ),
             child: PageView(
               scrollDirection: Axis.horizontal,
+              onPageChanged: (index){
+                setState(() {
+                  paginaAtiva = index;
+                });
+              },
               children: [
                 SelecaoDadosPage(),
                 RolagemDadoPage(),
@@ -67,8 +75,11 @@ class ApplicationState extends State<Application> {
           ),
         ),
         bottomNavigationBar: Container(
-          height: 80.0,
+          height: 80,
           color: tema.backgroundColor,
+          child: IndicadorPagina(
+            paginaAtiva: paginaAtiva,
+          ),
         ),
       ),
     );

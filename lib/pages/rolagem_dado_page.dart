@@ -16,10 +16,19 @@ class _RolagemDadoPageState extends State<RolagemDadoPage> {
   @override
   Widget build(BuildContext context) {
     final tema = Theme.of(context);
+
     double bordaVert = 12.0;
     double bordaHori = 54.0;
 
     String resultado = '?';
+
+    void rolarDado() {
+      Random random = Random();
+      setState(() {
+        resultado = random.nextInt(12).toString();
+      });
+    }
+
     
     return Column(
       children: [
@@ -93,11 +102,7 @@ class _RolagemDadoPageState extends State<RolagemDadoPage> {
                                   ),
                                 ),
                                 child: Text('Rolar'),
-                                onPressed: (){
-                                  Random random = Random();
-                                  int randomicoDoze = random.nextInt(12);
-                                  resultado = randomicoDoze.toString();
-                                },
+                                onPressed: rolarDado,
                               ),
                               SizedBox(width: 8.0,),
                               OutlinedButton(
