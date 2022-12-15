@@ -14,7 +14,7 @@ import 'package:dados_de_rpg/pages/selecao_dados_page.dart';
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const Application());
+    await tester.pumpWidget(const Aplicativo());
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);

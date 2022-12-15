@@ -11,18 +11,17 @@ import '../pages/12_rolagem_dado_page.dart';
 import '../pages/selecao_dados_page.dart';
 import '../res/strings.dart';
 
-void main() => runApp(Application());
+void main() => runApp(Aplicativo());
 
-class Application extends StatefulWidget {
-  const Application({super.key});
+class Aplicativo extends StatefulWidget {
+  const Aplicativo({super.key});
   @override
-  State<Application> createState() => ApplicationState();
+  State<Aplicativo> createState() => AplicativoState();
 }//end DadosRPGApp
 
-class ApplicationState extends State<Application> {
+class AplicativoState extends State<Aplicativo> {
   static ThemeData tema = Temas.modo_light;
   static bool isSwitched = false;
-  static int paginaAtiva = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -33,65 +32,7 @@ class ApplicationState extends State<Application> {
       //aparência
       theme: tema = isSwitched? Temas.modo_dark : Temas.modo_light,
       //principal
-      home: Scaffold(
-        backgroundColor: tema.scaffoldBackgroundColor,
-        //principal
-        appBar: AppBar(
-          title: Text(
-              Strings.nomeDoApp,
-              style: TextStyle(
-                color: tema.primaryColor,
-                fontSize: 22,
-              )
-          ),
-          actions: [
-            Switch(
-              activeColor: tema.primaryColor,
-              value: isSwitched,
-              onChanged: (value){
-                setState(() {
-                  isSwitched = !isSwitched;
-                });
-              }
-            ),
-          ],
-        ),
-        body: Container(
-          color: tema.backgroundColor,
-          child: Padding(
-            padding: const EdgeInsets.only(
-              top: 20, bottom: 20,
-              left: 10, right: 10,
-            ),
-            child: PageView(
-              scrollDirection: Axis.horizontal,
-
-
-              onPageChanged: (index){
-                setState(() {
-                  paginaAtiva = index;
-                });
-              },
-              children: [
-                SelecaoDadosPage(),
-
-                RolagemDado04Page(),
-                RolagemDado06Page(),
-                RolagemDado10Page(),
-                RolagemDado12Page(),
-                RolagemDado20Page(),
-              ],
-            ),
-          ),
-        ),
-        bottomNavigationBar: Container(
-          height: 80,
-          color: tema.backgroundColor,
-          child: IndicadorPagina(
-            paginaAtiva: paginaAtiva,
-          ),
-        ),
-      ),
+      home: SelecaoDadosPage(),
     );
   }//end override build
 }//end ApplicationState

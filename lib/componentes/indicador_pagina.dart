@@ -2,9 +2,9 @@ import 'package:dados_de_rpg/principal/main.dart';
 import 'package:flutter/material.dart';
 
 class IndicadorPagina extends StatelessWidget {
-  const IndicadorPagina({Key? key, required this.paginaAtiva}) : super(key: key);
+  const IndicadorPagina({Key? key, required this.isPaginaInicial}) : super(key: key);
 
-  final int paginaAtiva;
+  final bool isPaginaInicial;
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +17,8 @@ class IndicadorPagina extends StatelessWidget {
             width: 15,
             height: 15,
             decoration: BoxDecoration(
-              color: paginaAtiva == 0
-                ? ApplicationState.tema.primaryColor
+              color: isPaginaInicial == true
+                ? AplicativoState.tema.primaryColor
                 : Colors.grey,
               borderRadius: BorderRadius.circular(15.0)
             ),
@@ -28,9 +28,9 @@ class IndicadorPagina extends StatelessWidget {
             width: 15,
             height: 15,
             decoration: BoxDecoration(
-              color: paginaAtiva == 0
+              color: isPaginaInicial == true
                 ? Colors.grey
-                : ApplicationState.tema.primaryColor,
+                : AplicativoState.tema.primaryColor,
                 borderRadius: BorderRadius.circular(15.0)
             ),
           ),
