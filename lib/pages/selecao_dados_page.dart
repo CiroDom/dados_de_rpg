@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:dados_de_rpg/pages/04_rolagem_dado_page.dart';
+import 'package:dados_de_rpg/pages/20_rolagem_dado_page.dart';
 import 'package:dados_de_rpg/res/strings.dart';
 import 'package:flutter/material.dart';
 
@@ -51,20 +53,28 @@ class _SelecaoDadosPageState extends State<SelecaoDadosPage> {
                     child: Card(
                       elevation: elevacao,
                       color: tema.cardTheme.color,
-                      child: Row(
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.only(left: margemLateralRow, right: margemLateralRow),
-                            child: Image.asset("assets/d4.png", height: 45, width: 45,),
-                          ),
-                          Text(
-                            "D4 (quatro lados)",
-                            style: TextStyle(
-                              fontSize: tamanhoFonte,
-                              fontWeight: FontWeight.w400,
+                      child: GestureDetector(
+                        onDoubleTap: () {
+                          Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => RolagemDado04Page())
+                        );
+                        },
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(left: margemLateralRow, right: margemLateralRow),
+                              child: Image.asset("assets/d4.png", height: 45, width: 45,),
                             ),
-                          )
-                        ],
+                            Text(
+                              "D4 (quatro lados)",
+                              style: TextStyle(
+                                fontSize: tamanhoFonte,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -76,10 +86,7 @@ class _SelecaoDadosPageState extends State<SelecaoDadosPage> {
                       children: [
                         Padding(
                           padding: EdgeInsets.only(left: margemLateralRow, right: margemLateralRow),
-                          child: Icon(
-                            Icons.coffee,
-                            size: tamanhoIconeCard,
-                          ),
+                          child: Image.asset("assets/d6.png", height: 45, width: 45,),
                         ),
                         Text(
                           'D6 (seis lados)',
@@ -100,10 +107,7 @@ class _SelecaoDadosPageState extends State<SelecaoDadosPage> {
                       children: [
                         Padding(
                           padding: EdgeInsets.only(left: margemLateralRow, right: margemLateralRow),
-                          child: Icon(
-                            Icons.coffee,
-                            size: tamanhoIconeCard,
-                          ),
+                          child: Image.asset("assets/d8.png", height: 45, width: 45,),
                         ),
                         Text(
                           'D8 (oito lados)',
@@ -124,10 +128,7 @@ class _SelecaoDadosPageState extends State<SelecaoDadosPage> {
                       children: [
                         Padding(
                           padding: EdgeInsets.only(left: margemLateralRow, right: margemLateralRow),
-                          child: Icon(
-                            Icons.coffee,
-                            size: tamanhoIconeCard,
-                          ),
+                          child: Image.asset("assets/d10.png", height: 45, width: 45,),
                         ),
                         Text(
                           'D10 (dez lados)',
@@ -148,10 +149,7 @@ class _SelecaoDadosPageState extends State<SelecaoDadosPage> {
                       children: [
                         Padding(
                           padding: EdgeInsets.only(left: margemLateralRow, right: margemLateralRow),
-                          child: Icon(
-                            Icons.coffee,
-                            size: tamanhoIconeCard,
-                          ),
+                          child: Image.asset("assets/d12.png", height: 45, width: 45,),
                         ),
                         Text(
                           'D12 (doze lados)',
@@ -172,10 +170,7 @@ class _SelecaoDadosPageState extends State<SelecaoDadosPage> {
                       children: [
                         Padding(
                           padding: EdgeInsets.only(left: margemLateralRow, right: margemLateralRow),
-                          child: Icon(
-                            Icons.coffee,
-                            size: tamanhoIconeCard,
-                          ),
+                          child: Image.asset("assets/d20.png", height: 45, width: 45,),
                         ),
                         Text(
                           'D20 (vinte lados)',

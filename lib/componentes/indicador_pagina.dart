@@ -28,9 +28,9 @@ class IndicadorPagina extends StatelessWidget {
             width: 15,
             height: 15,
             decoration: BoxDecoration(
-              color: paginaAtiva == 1
-                ? ApplicationState.tema.primaryColor
-                : Colors.grey,
+              color: paginaAtiva == 0
+                ? Colors.grey
+                : ApplicationState.tema.primaryColor,
                 borderRadius: BorderRadius.circular(15.0)
             ),
           ),

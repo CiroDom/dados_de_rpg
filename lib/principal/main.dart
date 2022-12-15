@@ -1,9 +1,13 @@
+import 'package:dados_de_rpg/pages/04_rolagem_dado_page.dart';
+import 'package:dados_de_rpg/pages/06_rolagem_dado_page.dart';
+import 'package:dados_de_rpg/pages/10_rolagem_dado_page.dart';
+import 'package:dados_de_rpg/pages/20_rolagem_dado_page.dart';
 import 'package:dados_de_rpg/res/themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../componentes/indicador_pagina.dart';
-import '../pages/rolagem_dado_page.dart';
+import '../pages/12_rolagem_dado_page.dart';
 import '../pages/selecao_dados_page.dart';
 import '../res/strings.dart';
 
@@ -17,9 +21,8 @@ class Application extends StatefulWidget {
 
 class ApplicationState extends State<Application> {
   static ThemeData tema = Temas.modo_light;
-
-  bool isSwitched = false;
-  int paginaAtiva = 0;
+  static bool isSwitched = false;
+  static int paginaAtiva = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -62,6 +65,8 @@ class ApplicationState extends State<Application> {
             ),
             child: PageView(
               scrollDirection: Axis.horizontal,
+
+
               onPageChanged: (index){
                 setState(() {
                   paginaAtiva = index;
@@ -69,7 +74,12 @@ class ApplicationState extends State<Application> {
               },
               children: [
                 SelecaoDadosPage(),
-                RolagemDadoPage(),
+
+                RolagemDado04Page(),
+                RolagemDado06Page(),
+                RolagemDado10Page(),
+                RolagemDado12Page(),
+                RolagemDado20Page(),
               ],
             ),
           ),
