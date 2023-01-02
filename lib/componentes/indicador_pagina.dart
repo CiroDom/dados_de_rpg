@@ -8,6 +8,8 @@ class IndicadorPagina extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final tema = Theme.of(context);
+
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Row(
@@ -18,7 +20,7 @@ class IndicadorPagina extends StatelessWidget {
             height: 15,
             decoration: BoxDecoration(
               color: isPaginaInicial == true
-                ? AplicativoState.tema.primaryColor
+                ? tema.primaryColor
                 : Colors.grey,
               borderRadius: BorderRadius.circular(15.0)
             ),
@@ -30,7 +32,7 @@ class IndicadorPagina extends StatelessWidget {
             decoration: BoxDecoration(
               color: isPaginaInicial == true
                 ? Colors.grey
-                : AplicativoState.tema.primaryColor,
+                : tema.primaryColor,
                 borderRadius: BorderRadius.circular(15.0)
             ),
           ),

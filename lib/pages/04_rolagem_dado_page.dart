@@ -116,7 +116,9 @@ class _RolagemDado04PageState extends State<RolagemDado04Page> {
                                             shape: MaterialStateProperty
                                               .resolveWith<OutlinedBorder?>(
                                                 (states){
-                                                  return RoundedRectangleBorder(borderRadius: BorderRadius.circular(40.0));
+                                                  return RoundedRectangleBorder(
+                                                    borderRadius: BorderRadius.circular(40.0)
+                                                  );
                                               }
                                             ),
                                             fixedSize: MaterialStateProperty.resolveWith<Size?>(

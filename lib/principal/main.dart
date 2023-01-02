@@ -20,7 +20,6 @@ class Aplicativo extends StatefulWidget {
 }//end DadosRPGApp
 
 class AplicativoState extends State<Aplicativo> {
-  static ThemeData tema = Temas.modo_light;
   static bool isSwitched = false;
 
   @override
@@ -30,7 +29,9 @@ class AplicativoState extends State<Aplicativo> {
       debugShowCheckedModeBanner: false,
       debugShowMaterialGrid: false,
       //aparência
-      theme: tema = isSwitched? Temas.modo_dark : Temas.modo_light,
+      themeMode: ThemeMode.system,
+      theme: Temas.modo_light,
+      darkTheme: Temas.modo_dark,
       //principal
       home: SelecaoDadosPage(),
     );

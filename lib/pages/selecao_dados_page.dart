@@ -1,3 +1,4 @@
+import 'dart:ffi';
 import 'dart:ui';
 
 import 'package:dados_de_rpg/pages/04_rolagem_dado_page.dart';
@@ -23,9 +24,10 @@ class _SelecaoDadosPageState extends State<SelecaoDadosPage> {
   @override
   Widget build(BuildContext context) {
     final tema = Theme.of(context);
-    double tamanhoFonte = 15.0;
-    double elevacao = 3.0;
-    double margemLateralRow = 16.0;
+    const double tamanhoFonte = 15.0;
+    const double elevacao = 3.0;
+    const double margemLateralRow = 5.0;
+    const double margemCard = 3.0;
 
     return Scaffold(
       backgroundColor: tema.scaffoldBackgroundColor,
@@ -81,187 +83,316 @@ class _SelecaoDadosPageState extends State<SelecaoDadosPage> {
                       Container(
                         color: tema.backgroundColor,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            Expanded(
-                              child: GestureDetector(
-                                onTap: () {
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.all(margemCard),
+                              child: ElevatedButton(
+                                style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty
+                                    .resolveWith<Color?>(
+                                      (state) {
+                                        return tema.cardTheme.color;
+                                      }
+                                    ),
+                                  elevation: MaterialStateProperty
+                                    .resolveWith<double?>(
+                                        (state) {
+                                          return elevacao;
+                                        }
+                                      ),
+                                  shape: MaterialStateProperty
+                                    .resolveWith<OutlinedBorder?>(
+                                      (state) {
+                                        return RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(10.0)
+                                        );
+                                      }
+                                  )
+                              ),
+                                onPressed: () {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(builder: (context) => RolagemDado04Page())
                                   );
                                 },
-                                child: Card(
-                                  elevation: elevacao,
-                                  color: tema.cardTheme.color,
-                                  child: Row(
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsets.only(left: margemLateralRow, right: margemLateralRow),
-                                        child: Image.asset("assets/d4.png", height: 45, width: 45,),
+                                child: Row(
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.only(left: margemLateralRow, right: margemLateralRow),
+                                      child: Image.asset("assets/d4.png", height: 45, width: 45,),
+                                    ),
+                                    Text(
+                                      "D4 (quatro lados)",
+                                      style: TextStyle(
+                                        color: tema.textTheme.bodyText2?.color,
+                                        fontSize: tamanhoFonte,
+                                        fontWeight: FontWeight.w400,
                                       ),
-                                      Text(
-                                        "D4 (quatro lados)",
-                                        style: TextStyle(
-                                          fontSize: tamanhoFonte,
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      )
-                                    ],
-                                  ),
+                                    )
+                                  ],
                                 ),
                               ),
                             ),
-                            Expanded(
-                              child: GestureDetector(
-                                onTap: () {
+                          ),
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.all(margemCard),
+                              child: ElevatedButton(
+                                style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty
+                                        .resolveWith<Color?>(
+                                            (state) {
+                                          return tema.cardTheme.color;
+                                        }
+                                    ),
+                                    elevation: MaterialStateProperty
+                                        .resolveWith<double?>(
+                                            (state) {
+                                          return elevacao;
+                                        }
+                                    ),
+                                    shape: MaterialStateProperty
+                                        .resolveWith<OutlinedBorder?>(
+                                            (state) {
+                                          return RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.circular(10.0)
+                                          );
+                                        }
+                                    )
+                                ),
+                                onPressed: () {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(builder: (context) => RolagemDado06Page())
                                   );
                                 },
-                                child: Card(
-                                  elevation: elevacao,
-                                  color: tema.cardTheme.color,
-                                  child: Row(
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsets.only(left: margemLateralRow, right: margemLateralRow),
-                                        child: Image.asset("assets/d6.png", height: 45, width: 45,),
+                                child: Row(
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.only(left: margemLateralRow, right: margemLateralRow),
+                                      child: Image.asset("assets/d6.png", height: 45, width: 45,),
+                                    ),
+                                    Text(
+                                      "D6 (seis lados)",
+                                      style: TextStyle(
+                                        color: tema.textTheme.bodyText2?.color,
+                                        fontSize: tamanhoFonte,
+                                        fontWeight: FontWeight.w400,
                                       ),
-                                      Text(
-                                        'D6 (seis lados)',
-                                        style: TextStyle(
-                                          fontSize: tamanhoFonte,
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      )
-                                    ],
-                                  ),
+                                    )
+                                  ],
                                 ),
                               ),
                             ),
-                            Expanded(
-                              child: GestureDetector(
-                                onTap: () {
+                          ),
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.all(margemCard),
+                              child: ElevatedButton(
+                                style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty
+                                        .resolveWith<Color?>(
+                                            (state) {
+                                          return tema.cardTheme.color;
+                                        }
+                                    ),
+                                    elevation: MaterialStateProperty
+                                        .resolveWith<double?>(
+                                            (state) {
+                                          return elevacao;
+                                        }
+                                    ),
+                                    shape: MaterialStateProperty
+                                        .resolveWith<OutlinedBorder?>(
+                                            (state) {
+                                          return RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.circular(10.0)
+                                          );
+                                        }
+                                    )
+                                ),
+                                onPressed: () {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(builder: (context) => RolagemDado08Page())
                                   );
                                 },
-                                child: Card(
-                                  elevation: elevacao,
-                                  color: tema.cardTheme.color,
-                                  child: Row(
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsets.only(left: margemLateralRow, right: margemLateralRow),
-                                        child: Image.asset("assets/d8.png", height: 45, width: 45,),
+                                child: Row(
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.only(left: margemLateralRow, right: margemLateralRow),
+                                      child: Image.asset("assets/d8.png", height: 45, width: 45,),
+                                    ),
+                                    Text(
+                                      "D8 (oito lados)",
+                                      style: TextStyle(
+                                        color: tema.textTheme.bodyText2?.color,
+                                        fontSize: tamanhoFonte,
+                                        fontWeight: FontWeight.w400,
                                       ),
-                                      Text(
-                                        'D8 (oito lados)',
-                                        style: TextStyle(
-                                          fontSize: tamanhoFonte,
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      )
-                                    ],
-                                  ),
+                                    )
+                                  ],
                                 ),
                               ),
                             ),
-                            Expanded(
-                              child: GestureDetector(
-                                onTap: () {
+                          ),
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.all(margemCard),
+                              child: ElevatedButton(
+                                style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty
+                                        .resolveWith<Color?>(
+                                            (state) {
+                                          return tema.cardTheme.color;
+                                        }
+                                    ),
+                                    elevation: MaterialStateProperty
+                                        .resolveWith<double?>(
+                                            (state) {
+                                          return elevacao;
+                                        }
+                                    ),
+                                    shape: MaterialStateProperty
+                                        .resolveWith<OutlinedBorder?>(
+                                            (state) {
+                                          return RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.circular(10.0)
+                                          );
+                                        }
+                                    )
+                                ),
+                                onPressed: () {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(builder: (context) => RolagemDado10Page())
                                   );
                                 },
-                                child: Card(
-                                  elevation: elevacao,
-                                  color: tema.cardTheme.color,
-                                  child: Row(
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsets.only(left: margemLateralRow, right: margemLateralRow),
-                                        child: Image.asset("assets/d10.png", height: 45, width: 45,),
+                                child: Row(
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.only(left: margemLateralRow, right: margemLateralRow),
+                                      child: Image.asset("assets/d10.png", height: 45, width: 45,),
+                                    ),
+                                    Text(
+                                      "D10 (dez lados)",
+                                      style: TextStyle(
+                                        color: tema.textTheme.bodyText2?.color,
+                                        fontSize: tamanhoFonte,
+                                        fontWeight: FontWeight.w400,
                                       ),
-                                      Text(
-                                        'D10 (dez lados)',
-                                        style: TextStyle(
-                                          fontSize: tamanhoFonte,
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      )
-                                    ],
-                                  ),
+                                    )
+                                  ],
                                 ),
                               ),
                             ),
-                            Expanded(
-                              child: GestureDetector(
-                                onTap: () {
+                          ),
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.all(margemCard),
+                              child: ElevatedButton(
+                                style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty
+                                        .resolveWith<Color?>(
+                                            (state) {
+                                          return tema.cardTheme.color;
+                                        }
+                                    ),
+                                    elevation: MaterialStateProperty
+                                        .resolveWith<double?>(
+                                            (state) {
+                                          return elevacao;
+                                        }
+                                    ),
+                                    shape: MaterialStateProperty
+                                        .resolveWith<OutlinedBorder?>(
+                                            (state) {
+                                          return RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.circular(10.0)
+                                          );
+                                        }
+                                    )
+                                ),
+                                onPressed: () {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(builder: (context) => RolagemDado12Page())
                                   );
                                 },
-                                child: Card(
-                                  elevation: elevacao,
-                                  color: tema.cardTheme.color,
-                                  child: Row(
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsets.only(left: margemLateralRow, right: margemLateralRow),
-                                        child: Image.asset("assets/d12.png", height: 45, width: 45,),
+                                child: Row(
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.only(left: margemLateralRow, right: margemLateralRow),
+                                      child: Image.asset("assets/d12.png", height: 45, width: 45,),
+                                    ),
+                                    Text(
+                                      "D12 (doze lados)",
+                                      style: TextStyle(
+                                        color: tema.textTheme.bodyText2?.color,
+                                        fontSize: tamanhoFonte,
+                                        fontWeight: FontWeight.w400,
                                       ),
-                                      Text(
-                                        'D12 (doze lados)',
-                                        style: TextStyle(
-                                          fontSize: tamanhoFonte,
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      )
-                                    ],
-                                  ),
+                                    )
+                                  ],
                                 ),
                               ),
                             ),
-                            Expanded(
-                              child: GestureDetector(
-                                onTap: () {
+                          ),
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.all(margemCard),
+                              child: ElevatedButton(
+                                style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty
+                                        .resolveWith<Color?>(
+                                            (state) {
+                                          return tema.cardTheme.color;
+                                        }
+                                    ),
+                                    elevation: MaterialStateProperty
+                                        .resolveWith<double?>(
+                                            (state) {
+                                          return elevacao;
+                                        }
+                                    ),
+                                    shape: MaterialStateProperty
+                                        .resolveWith<OutlinedBorder?>(
+                                            (state) {
+                                          return RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.circular(10.0)
+                                          );
+                                        }
+                                    )
+                                ),
+                                onPressed: () {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(builder: (context) => RolagemDado20Page())
                                   );
                                 },
-                                child: Card(
-                                  elevation: elevacao,
-                                  color: tema.cardTheme.color,
-                                  child: Row(
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsets.only(left: margemLateralRow, right: margemLateralRow),
-                                        child: Image.asset("assets/d20.png", height: 45, width: 45,),
+                                child: Row(
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.only(left: margemLateralRow, right: margemLateralRow),
+                                      child: Image.asset("assets/d20.png", height: 45, width: 45,),
+                                    ),
+                                    Text(
+                                      "D20 (vinte lados)",
+                                      style: TextStyle(
+                                        color: tema.textTheme.bodyText2?.color,
+                                        fontSize: tamanhoFonte,
+                                        fontWeight: FontWeight.w400,
                                       ),
-                                      Text(
-                                        'D20 (vinte lados)',
-                                        style: TextStyle(
-                                          fontSize: tamanhoFonte,
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
+                                    )
+                                  ],
                                 ),
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ]),
               ),

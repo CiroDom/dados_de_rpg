@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 
+class TemaProvider extends ChangeNotifier {
+  ThemeMode modoTema = ThemeMode.light;
+
+  bool get isModoDark => modoTema == ThemeMode.dark;
+}
+
 class Temas {
 
   static final ThemeData modo_light = ThemeData(
