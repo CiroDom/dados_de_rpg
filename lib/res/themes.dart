@@ -4,6 +4,10 @@ class TemaProvider extends ChangeNotifier {
   ThemeMode modoTema = ThemeMode.light;
 
   bool get isModoDark => modoTema == ThemeMode.dark;
+  void mudarTema(bool temaMudado) {
+    modoTema = temaMudado ? ThemeMode.dark : ThemeMode.light;
+    notifyListeners();
+  }
 }
 
 class Temas {

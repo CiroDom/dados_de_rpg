@@ -1,25 +1,28 @@
 import 'dart:math';
+import 'package:dados_de_rpg/componentes/switch_button_tema.dart';
 import 'package:dados_de_rpg/pages/selecao_dados_page.dart';
 import 'package:dados_de_rpg/principal/main.dart';
 import 'package:flutter/material.dart';
 import '../componentes/indicador_pagina.dart';
 import '../res/strings.dart';
 
-class RolagemDado10Page extends StatefulWidget {
-  const RolagemDado10Page({super.key});
+class RolagemDadoPage extends StatefulWidget {
+  final int quantLados;
+  final String imagem;
+  const RolagemDadoPage(this.quantLados, this.imagem, {super.key});
 
   @override
-  State<RolagemDado10Page> createState() => _RolagemDado10PageState();
+  State<RolagemDadoPage> createState() => _RolagemDadoPageState();
 }//end class RolagemDado
 
-class _RolagemDado10PageState extends State<RolagemDado10Page> {
+class _RolagemDadoPageState extends State<RolagemDadoPage> {
   double bordaVert = 12.0;
   double bordaHori = 54.0;
   String resultado = '?';
 
   void rolarDado() {
     Random random = Random();
-    String resultRandom = (random.nextInt(10) + 1).toString();
+    String resultRandom = (random.nextInt(widget.quantLados) + 1).toString();
     setState(() {
       resultado = resultRandom;
     });
@@ -27,6 +30,7 @@ class _RolagemDado10PageState extends State<RolagemDado10Page> {
   @override
   Widget build(BuildContext context) {
     final tema = Theme.of(context);
+    double elevacao = 4.0;
 
     return Scaffold(
       backgroundColor: tema.scaffoldBackgroundColor,
@@ -40,15 +44,7 @@ class _RolagemDado10PageState extends State<RolagemDado10Page> {
             )
         ),
         actions: [
-          Switch(
-              activeColor: tema.primaryColor,
-              value: AplicativoState.isSwitched,
-              onChanged: (value){
-                setState(() {
-                  AplicativoState.isSwitched = !AplicativoState.isSwitched;
-                });
-              }
-          ),
+          SwitchButtonTema(),
         ],
       ),
       body: Container(
@@ -85,10 +81,11 @@ class _RolagemDado10PageState extends State<RolagemDado10Page> {
                       padding: const EdgeInsets.only(top: 8.0),
                       child: Card(
                         color: tema.cardTheme.color,
+                        elevation: elevacao,
                         child: Stack(
                             alignment: Alignment.center,
                             children: [
-                              Image.asset("assets/bg_d10.png", height: 220, width: 220,),
+                              Image.asset(widget.imagem, height: 220, width: 220,),
                               Text(
                                 resultado,
                                 style: TextStyle(
@@ -116,7 +113,9 @@ class _RolagemDado10PageState extends State<RolagemDado10Page> {
                                             shape: MaterialStateProperty
                                                 .resolveWith<OutlinedBorder?>(
                                                     (states){
-                                                  return RoundedRectangleBorder(borderRadius: BorderRadius.circular(40.0));
+                                                  return RoundedRectangleBorder(
+                                                      borderRadius: BorderRadius.circular(40.0)
+                                                  );
                                                 }
                                             ),
                                             fixedSize: MaterialStateProperty.resolveWith<Size?>(
@@ -125,7 +124,10 @@ class _RolagemDado10PageState extends State<RolagemDado10Page> {
                                                 }
                                             ),
                                           ),
-                                          child: Text('Rolar'),
+                                          child: Text(
+                                            'Rolar',
+                                            style: TextStyle(fontWeight: FontWeight.bold),
+                                          ),
                                           onPressed: rolarDado,
                                         ),
                                         SizedBox(width: 8.0,),
@@ -161,6 +163,7 @@ class _RolagemDado10PageState extends State<RolagemDado10Page> {
                                           child: Text(
                                             'Cancelar',
                                             style: TextStyle(
+                                              fontWeight: FontWeight.bold,
                                               color: tema.primaryColor,
                                             ),
                                           ),

@@ -1,17 +1,8 @@
-import 'dart:ffi';
-import 'dart:ui';
-
-import 'package:dados_de_rpg/pages/04_rolagem_dado_page.dart';
-import 'package:dados_de_rpg/pages/06_rolagem_dado_page.dart';
-import 'package:dados_de_rpg/pages/20_rolagem_dado_page.dart';
-import 'package:dados_de_rpg/principal/main.dart';
+import 'package:dados_de_rpg/componentes/switch_button_tema.dart';
 import 'package:dados_de_rpg/res/strings.dart';
 import 'package:flutter/material.dart';
-
 import '../componentes/indicador_pagina.dart';
-import '08_rolagem_dado_page.dart';
-import '10_rolagem_dado_page.dart';
-import '12_rolagem_dado_page.dart';
+import 'rolagem_dados_page.dart';
 
 class SelecaoDadosPage extends StatefulWidget {
   const SelecaoDadosPage({super.key});
@@ -25,7 +16,7 @@ class _SelecaoDadosPageState extends State<SelecaoDadosPage> {
   Widget build(BuildContext context) {
     final tema = Theme.of(context);
     const double tamanhoFonte = 15.0;
-    const double elevacao = 3.0;
+    const double elevacao = 2.0;
     const double margemLateralRow = 5.0;
     const double margemCard = 3.0;
 
@@ -42,15 +33,16 @@ class _SelecaoDadosPageState extends State<SelecaoDadosPage> {
             )
         ),
         actions: [
-          Switch(
-              activeColor: tema.primaryColor,
-              value: AplicativoState.isSwitched,
-              onChanged: (value){
-                setState(() {
-                  AplicativoState.isSwitched = !AplicativoState.isSwitched;
-                });
-              }
-          ),
+          SwitchButtonTema()
+          // Switch(
+          //     activeColor: tema.primaryColor,
+          //     value: AplicativoState.isSwitched,
+          //     onChanged: (value){
+          //       setState(() {
+          //         AplicativoState.isSwitched = !AplicativoState.isSwitched;
+          //       });
+          //     }
+          // ),
         ],
       ),
       body: Container(
@@ -115,7 +107,7 @@ class _SelecaoDadosPageState extends State<SelecaoDadosPage> {
                                 onPressed: () {
                                   Navigator.push(
                                       context,
-                                      MaterialPageRoute(builder: (context) => RolagemDado04Page())
+                                      MaterialPageRoute(builder: (context) => RolagemDadoPage(4, 'assets/bg_d4.png'))
                                   );
                                 },
                                 child: Row(
@@ -166,7 +158,7 @@ class _SelecaoDadosPageState extends State<SelecaoDadosPage> {
                                 onPressed: () {
                                   Navigator.push(
                                       context,
-                                      MaterialPageRoute(builder: (context) => RolagemDado06Page())
+                                      MaterialPageRoute(builder: (context) => RolagemDadoPage(6, 'assets/bg_d6.png'))
                                   );
                                 },
                                 child: Row(
@@ -217,7 +209,7 @@ class _SelecaoDadosPageState extends State<SelecaoDadosPage> {
                                 onPressed: () {
                                   Navigator.push(
                                       context,
-                                      MaterialPageRoute(builder: (context) => RolagemDado08Page())
+                                      MaterialPageRoute(builder: (context) => RolagemDadoPage(8, 'assets/bg_d8.png'))
                                   );
                                 },
                                 child: Row(
@@ -268,7 +260,7 @@ class _SelecaoDadosPageState extends State<SelecaoDadosPage> {
                                 onPressed: () {
                                   Navigator.push(
                                       context,
-                                      MaterialPageRoute(builder: (context) => RolagemDado10Page())
+                                      MaterialPageRoute(builder: (context) => RolagemDadoPage(10, 'assets/bg_d10.png'))
                                   );
                                 },
                                 child: Row(
@@ -319,7 +311,7 @@ class _SelecaoDadosPageState extends State<SelecaoDadosPage> {
                                 onPressed: () {
                                   Navigator.push(
                                       context,
-                                      MaterialPageRoute(builder: (context) => RolagemDado12Page())
+                                      MaterialPageRoute(builder: (context) => RolagemDadoPage(12, 'assets/bg_d12.png'))
                                   );
                                 },
                                 child: Row(
@@ -370,7 +362,7 @@ class _SelecaoDadosPageState extends State<SelecaoDadosPage> {
                                 onPressed: () {
                                   Navigator.push(
                                       context,
-                                      MaterialPageRoute(builder: (context) => RolagemDado20Page())
+                                      MaterialPageRoute(builder: (context) => RolagemDadoPage(20, 'assets/bg_d20.png'))
                                   );
                                 },
                                 child: Row(

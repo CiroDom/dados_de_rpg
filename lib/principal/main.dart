@@ -1,15 +1,7 @@
-import 'package:dados_de_rpg/pages/04_rolagem_dado_page.dart';
-import 'package:dados_de_rpg/pages/06_rolagem_dado_page.dart';
-import 'package:dados_de_rpg/pages/10_rolagem_dado_page.dart';
-import 'package:dados_de_rpg/pages/20_rolagem_dado_page.dart';
 import 'package:dados_de_rpg/res/themes.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../componentes/indicador_pagina.dart';
-import '../pages/12_rolagem_dado_page.dart';
+import 'package:provider/provider.dart';
 import '../pages/selecao_dados_page.dart';
-import '../res/strings.dart';
 
 void main() => runApp(Aplicativo());
 
@@ -24,16 +16,23 @@ class AplicativoState extends State<Aplicativo> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      //debug
-      debugShowCheckedModeBanner: false,
-      debugShowMaterialGrid: false,
-      //aparência
-      themeMode: ThemeMode.system,
-      theme: Temas.modo_light,
-      darkTheme: Temas.modo_dark,
-      //principal
-      home: SelecaoDadosPage(),
+    return ChangeNotifierProvider(
+      create: (context) => TemaProvider(),
+      builder: (context, _) {
+        final providerTema = Provider.of<TemaProvider>(context);
+
+        return MaterialApp(
+          //debug
+          debugShowCheckedModeBanner: false,
+          debugShowMaterialGrid: false,
+          //aparência
+          themeMode: providerTema.modoTema,
+          theme: Temas.modo_light,
+          darkTheme: Temas.modo_dark,
+          //principal
+          home: SelecaoDadosPage(),
+        );
+      },
     );
   }//end override build
 }//end ApplicationState
