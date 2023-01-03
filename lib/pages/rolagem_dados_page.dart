@@ -35,6 +35,7 @@ class _RolagemDadoPageState extends State<RolagemDadoPage> {
     return Scaffold(
       backgroundColor: tema.scaffoldBackgroundColor,
       appBar: AppBar(
+        foregroundColor: tema.textTheme.bodyText2?.color,
         title: Text(
             Strings.nomeDoApp,
             textAlign: TextAlign.start,
