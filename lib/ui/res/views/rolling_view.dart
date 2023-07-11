@@ -5,9 +5,9 @@ import 'package:dados_rpg/ui/res/dice_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../provider_models/theme_model.dart';
-import '../components/rolling_container.dart';
-import '../res/dice_colors.dart';
+import '../../provider_models/theme_model.dart';
+import '../../components/rolling_container.dart';
+import '../dice_colors.dart';
 
 class RollingView extends StatelessWidget {
   const RollingView({

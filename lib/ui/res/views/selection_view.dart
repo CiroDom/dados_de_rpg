@@ -2,11 +2,11 @@ import 'package:dados_rpg/core/presenters/selelection_presenter.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../provider_models/theme_model.dart';
-import '../components/order.dart';
-import '../components/page_indicator.dart';
-import '../res/dice_colors.dart';
-import '../res/dice_strings.dart';
+import '../../provider_models/theme_model.dart';
+import '../../components/order.dart';
+import '../../components/page_indicator.dart';
+import '../dice_colors.dart';
+import '../dice_strings.dart';
 
 class SelectionView extends StatelessWidget {
   const SelectionView({

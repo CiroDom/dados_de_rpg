@@ -1,4 +1,4 @@
-import '../res/dice_strings.dart';
+import '../../ui/res/dice_strings.dart';
 
 class DiceListModel {
   final _dicesList = [4, 6, 8, 10, 12, 20];

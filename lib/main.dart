@@ -1,4 +1,4 @@
-import 'package:dados_rpg/core/provider_models/theme_model.dart';
+import 'package:dados_rpg/ui/provider_models/theme_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
