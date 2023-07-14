@@ -30,7 +30,7 @@ class RollingView extends StatelessWidget {
           Switch(
             activeColor: DiceColors.primary,
             value:
-              Provider.of<ThemeModel>(context, listen: false).getSwitchState,
+                Provider.of<ThemeModel>(context, listen: false).getSwitchState,
             onChanged: (value) {
               Provider.of<ThemeModel>(context, listen: false).darkModeOn(value);
             },
@@ -54,7 +54,7 @@ class RollingView extends StatelessWidget {
                 RollingContainer(
                   currentTheme: currentTheme,
                   numberOfSides: presenter.diceNumber,
-                  roll: presenter.throwDice,
+                  roll: presenter.startAnimation,
                   back: () => presenter.backToBegin(context),
                   presenter: presenter,
                 )
@@ -64,7 +64,9 @@ class RollingView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 PageIndicator(isInitialPage: false),
-                SizedBox(height: 16.0,)
+                SizedBox(
+                  height: 16.0,
+                )
               ],
             )
           ],

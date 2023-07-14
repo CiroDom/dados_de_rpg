@@ -1,12 +1,10 @@
 import 'package:dados_rpg/core/presenters/rolling_presenter.dart';
-import 'package:dados_rpg/ui/components/result_animation.dart';
 import 'package:flutter/material.dart';
-
 import '../res/dice_colors.dart';
 import '../res/dice_strings.dart';
 import '../res/dice_styles.dart';
 
-class RollingContainer extends StatefulWidget {
+class RollingContainer extends StatelessWidget {
   const RollingContainer({
     super.key,
     required this.currentTheme,
@@ -23,33 +21,16 @@ class RollingContainer extends StatefulWidget {
   final RollingPresenter presenter;
 
   @override
-  State<RollingContainer> createState() => _RollingContainerState();
-}
-
-class _RollingContainerState extends State<RollingContainer> {
-  @override
-  void initState() {
-    super.initState();
-    widget.presenter.addListener(() => setState(() {}));
-  }
-
-  @override
-  void dispose() {
-    widget.presenter.removeListener(() => setState(() {}));
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     const double widthButton = 135.0;
     const double heightButton = 40.0;
     const double insideSizedBoxHeight = 70.0;
-    final bool fourSidesDice = widget.numberOfSides == 4;
-    bool wasThrown = widget.presenter.getWasThrown;
+    final bool fourSidesDice = numberOfSides == 4;
+    bool wasThrown = presenter.getWasThrown;
 
     return Container(
       decoration: BoxDecoration(
-          color: widget.currentTheme.brightness == Brightness.light
+          color: currentTheme.brightness == Brightness.light
               ? DiceColors.backgroundLight
               : DiceColors.backgroundDark,
           borderRadius: BorderRadius.circular(8.0)),
@@ -61,31 +42,30 @@ class _RollingContainerState extends State<RollingContainer> {
             alignment: Alignment.center,
             children: [
               Image.asset(
-                'assets/d${widget.numberOfSides}.png',
+                'assets/d$numberOfSides.png',
                 width: 220,
                 height: 220,
               ),
-              fourSidesDice
-                  ? Column(
-                      children: [
-                        const SizedBox(
-                          height: 11.0,
-                        ),
-                        wasThrown
-                            ? ResultAnimation(
-                                result: widget.presenter.getResult)
-                            : Text(
-                                DiceStrings.initialMark,
+              AnimatedBuilder(
+                  animation: presenter,
+                  builder: (context, child) {
+                    return fourSidesDice
+                        ? Column(
+                            children: [
+                              const SizedBox(
+                                height: 11.0,
+                              ),
+                              Text(
+                                presenter.getToShow,
                                 style: DiceStyles.resultTextStyle,
                               ),
-                      ],
-                    )
-                  : wasThrown
-                      ? ResultAnimation(result: widget.presenter.getResult)
-                      : Text(
-                          DiceStrings.initialMark,
-                          style: DiceStyles.resultTextStyle,
-                        ),
+                            ],
+                          )
+                        : Text(
+                            presenter.getToShow,
+                            style: DiceStyles.resultTextStyle,
+                          );
+                  }),
             ],
           ),
           const SizedBox(height: insideSizedBoxHeight),
@@ -101,7 +81,7 @@ class _RollingContainerState extends State<RollingContainer> {
                     height: heightButton,
                     child: ElevatedButton(
                       style: DiceStyles.rollButtonStyle,
-                      onPressed: wasThrown ? null : widget.roll,
+                      onPressed: wasThrown ? null : roll,
                       child: Text(DiceStrings.buttonRoll),
                     ),
                   ),
@@ -114,7 +94,7 @@ class _RollingContainerState extends State<RollingContainer> {
                     height: heightButton,
                     child: OutlinedButton(
                       style: DiceStyles.backButtonStyle,
-                      onPressed: widget.back,
+                      onPressed: back,
                       child: Text(DiceStrings.buttonBack),
                     ),
                   )
