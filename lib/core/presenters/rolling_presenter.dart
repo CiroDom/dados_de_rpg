@@ -34,7 +34,7 @@ class RollingPresenter extends ChangeNotifier {
     Timer.periodic(duration, (timer) {
       _toShow = random.nextInt(diceNumber + 1).toString();
 
-      if (_toShow == result) {
+      if (int.parse(_toShow) == result) {
         timer.cancel();
       }
       notifyListeners();

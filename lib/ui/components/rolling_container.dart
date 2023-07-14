@@ -26,7 +26,6 @@ class RollingContainer extends StatelessWidget {
     const double heightButton = 40.0;
     const double insideSizedBoxHeight = 70.0;
     final bool fourSidesDice = numberOfSides == 4;
-    bool wasThrown = presenter.getWasThrown;
 
     return Container(
       decoration: BoxDecoration(
@@ -79,10 +78,15 @@ class RollingContainer extends StatelessWidget {
                   SizedBox(
                     width: widthButton,
                     height: heightButton,
-                    child: ElevatedButton(
-                      style: DiceStyles.rollButtonStyle,
-                      onPressed: wasThrown ? null : roll,
-                      child: Text(DiceStrings.buttonRoll),
+                    child: AnimatedBuilder(
+                      animation: presenter,
+                      builder: (context, child) {
+                        return ElevatedButton(
+                          style: DiceStyles.rollButtonStyle,
+                          onPressed: presenter.getWasThrown ? null : roll,
+                          child: Text(DiceStrings.buttonRoll),
+                        );
+                      }
                     ),
                   ),
                   const SizedBox(
